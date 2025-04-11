@@ -42,7 +42,6 @@ fun Route.authRoute(
 
     post("/refresh") {
         val request = call.receive<RefreshTokenRequest>()
-        println("refresh 요청 왔음")
         val decoded = try {
             jwtService.jwtVerifier.verify(request.refreshToken)
         } catch (e: Exception) {
@@ -59,8 +58,9 @@ fun Route.authRoute(
         val user = userService.findById(userId)
             ?: return@post call.respond(HttpStatusCode.NotFound, BaseResponse<Unit>(404, "사용자를 찾을 수 없습니다", null))
 
-        val newAccessToken = jwtService.createAccessToken(userId, 1 * 30 * 1000) // 1분
-        val newRefreshToken = jwtService.createRefreshToken(userId, 4 * 60 * 1000) //4 분
+        val newAccessToken = jwtService.createAccessToken(userId, 1 * 30 * 1000) // 30초
+        val newRefreshToken = jwtService.createRefreshToken(userId, 2 * 60 * 1000) //2 분
+        println("refresh 요청 왔음 $newAccessToken")
         call.respond(
             HttpStatusCode.OK,
             BaseResponse(

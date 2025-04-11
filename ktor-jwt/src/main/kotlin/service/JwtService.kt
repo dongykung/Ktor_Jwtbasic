@@ -27,7 +27,7 @@ class JwtService(
             .withIssuer(issuer)
             .build()
 
-    fun createAccessToken(userId: String, expireIn: Int = 15 * 60 * 1000): String {
+    fun createAccessToken(userId: String, expireIn: Int): String {
         return JWT.create()
             .withAudience(audience)
             .withIssuer(issuer)
@@ -53,8 +53,8 @@ class JwtService(
             return LoginResult.InvalidPassword
         }
         val userId = foundUser.id.toString()
-        val accessToken = createAccessToken(userId, 1 * 60 * 1000) // 1분
-        val refreshToken = createRefreshToken(userId, 4 * 60 * 1000) // 4분
+        val accessToken = createAccessToken(userId, 1 * 30 * 1000) // 30초
+        val refreshToken = createRefreshToken(userId, 2 * 60 * 1000) // 2분
         return LoginResult.Success(accessToken, refreshToken)
     }
 
