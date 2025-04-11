@@ -3,11 +3,14 @@
 
 간단한 **JWT 인증 서버**로, 클라이언트(JWT 사용 앱)의 로그인/회원가입/토큰 재발급 등 **토큰 기반 인증 플로우를 연습**할 수 있도록 만들어졌습니다.
 
+accessToken의 유효기간 =  30초
+refreshToken의 유효기간 =  2분
+
 - 🧪 **Database 사용 없음** — 메모리에 유저를 올려 관리합니다.
 - 🔐 JWT 기반 AccessToken / RefreshToken 발급 및 검증
 - 🧵 Ktor + Kotlin + JWT 사용
 - 📦 BaseResponse 구조로 통일된 응답 제공
-
+- 토큰의 유효시간을 변경하고 싶다면 src/main/kotlin/service/JwtService 파일에서 상수 값을 변경하시면 됩니다(refreshToken 요청 시 routine/AuthRouting 파일에서 조정 가능)
 ---
 
 ## 🧰 기술 스택
