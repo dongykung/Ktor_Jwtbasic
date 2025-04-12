@@ -61,11 +61,11 @@ data class BaseResponse<T>(
   "data": true
 }
 ```
-회원가입이 귀찮으시다면
-email: 옥지@naver.com   /   pw: 1234
-email: 빵빵이@naver.com   /   pw: 1234
-email: 지방이@naver.com   /   pw: 1234
-email: dong@naver.com   /   pw: 1234
+회원가입이 귀찮으시다면 <br>
+email: 옥지@naver.com   /   pw: 1234 <br>
+email: 빵빵이@naver.com   /   pw: 1234 <br>
+email: 지방이@naver.com   /   pw: 1234 <br>
+email: dong@naver.com   /   pw: 1234 <br>
 
 미리 저장되어 있는 4개의 계정을 사용하셔도 토큰이 발급됩니다.
 ---
